@@ -96,3 +96,46 @@ print(all([                                 # all of these are true, because
     3 == len(re.split("[ab]", "carbs")),    # * split on a orb to ['c', 'r', 's']
     "R-D-" == re.sub("[0-9]", "-", "R2D2")  # * replace digits with dashes
 ]))                                         # prints True
+
+# Object-Oriented Programming
+
+# by convention, we give clases PascalCase names class Set:
+
+# these are the member functions
+# everyone takes a first parameter "self" (another conventiojn)
+# that refers to the particular Set ofject being used
+
+def __init__(self, values=None):
+    '''This is the constructor,
+    It gets called when you cr3eate a new Set
+    s1 = Set()      # empty Set
+    s2 = Set([1, 2, 2, 3])'''
+
+    self.dict = {}  # each instance of Set has its own dict property
+                    # which is what we'll use to track memberships
+    if values is not None:
+        for value in values:
+            self.add(value)
+def __repr__(self):
+    '''this is the string representation of a Set object
+    if you type it at the Python promp or pass it to str()'''
+    return "Set: " + str(self.dit.keys())
+
+# we'll represent membership by being a key in self.dict with value True
+def add(self.value):
+    self.dict[value] = True
+
+# value is in the Set if it's a key in the dictionary
+def contains(self, value):
+    return value in self.dict
+
+def remove(slef, value):
+    del self.dict[value]
+
+# customs class in use
+
+s = Set([1, 2, 3])
+s.add(4)
+print(s.contains(4))        # True
+s.remove(3)
+print(s.contains(3))        # False
