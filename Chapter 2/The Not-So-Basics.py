@@ -56,3 +56,30 @@ def natural_numbers():
         n += 1
 
 lazy_evens_below_20 = (i for i in lazy_range(20) if i % 2 == 0)
+
+# Randomness
+
+import random
+
+four_uniform_randoms = [random.random() for _ in range(4)]          # creates 4 random numbers
+
+# not actually random
+random.seed(10)
+print(random.random())      # 0.5714025946899135
+random.seed(10)
+print(random.random())      # 0.5714025946899135
+
+random.randrange(10)        # choose randomly from range(10) = [0, 1, 2, 3,...,8, 9]
+random.rangerange(3,6)      # choose randomly from range(3, 6) = [3, 4, 5]
+
+up_to_ten = list(range(10))
+random.shuffle(up_to_ten)
+print(up_to_ten)            # shuffled list of 10 elements
+
+my_best_friend = random.choice(['Alice', 'Bob', 'Charlie'])     # random choice from List
+
+lottery_numbers = list(range(60))
+winning_numbers = random.sample(lottery_numbers, 6)             # 6 random numbers from 60 sampling with out replacement
+
+four_with_replacement = [random.choice(range(10))
+                        for _ in range(4)]                      # 4 random numbers from 10 sampling with replacement
