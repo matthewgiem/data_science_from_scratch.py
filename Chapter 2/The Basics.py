@@ -226,3 +226,56 @@ s.add(2)    # s is still {1, 2}
 x = len(s)  # equals 2
 y = 2 in s  # True
 z = 3 in s  # False
+
+item_list = [1, 2, 3, 1, 2, 3]
+num_itmes = len(item_list)          # 6
+item_set = set(item_list)           # {1, 2, 3}
+num_distinct_items = len(item_set)  # 3
+distinct_item_list = list(item_set) # [1, 2, 3]
+
+if 1 > 2:
+    message = "if only 1 were greater than two..."
+elif 1 > 3:
+    message = "elif stands for 'else if'"
+else:
+    message = "when all else fails use else (if you want to)"
+
+parity = 'even' is x % 2 == 0 else 'odd'
+
+x = 0
+while x < 10:
+    print('{} is less than 10'.format(x))
+    x += 1
+
+for x in range(10):
+    print('{} is less than 10'.format(x))
+
+for x in range(10):
+    if x == 3:
+        continue    # go immediately to the next iteration
+    if x == 5:
+        break       # quit the loop entirely
+    print(x)
+# will print(0, 1, 2, 4)
+
+one_is_less_than_two = 1 < 2        # True
+true_equals_false = True == False   # False
+
+x = None
+print(x == None)                    # prints True, but is not Pythonic
+print(x is None)                    # prints True, and is Pythonic
+
+# the following are falsey
+False
+None
+[] (an empty list)
+{} (an empty dict)
+""
+set()
+0
+0.0
+all([True, 1, {3}])             # True
+all([True, 1, {}])              # False
+any([True, 1, {}])              # True, True is truthy
+all([])                         # True, no falsy elements in the list
+any([])                         # Flase, no truthy elements in the list
