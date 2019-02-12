@@ -180,3 +180,24 @@ x_evens = list_evener(xs)                       # again [2, 4]
 x_product = reduce(mulitply, xs)                # = 1 * 2 * 3 * 4 = 24
 list_product = partial(reduce, mulitply)        # *function* that reduces a list
 x_product = list_product(xs)                    # again 24
+
+# Enumerate
+
+# not Pythonic
+for i in range(len(document)):
+    document = document[i]
+    do_something(i, document)
+
+# also not Pythonic
+i = 0
+for document in documents:
+    do_something(i, documemnt)
+    i += 1
+
+# Pythonic
+for i, document in enumerate(documents):
+    do_something(i, document)
+
+# if we just want the indexes
+for i in range(len(documents)): do_something(i)     # not Pythonic
+for i, _ in enumerate(documents): do_something(i)   # Pythonic
