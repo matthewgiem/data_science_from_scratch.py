@@ -83,3 +83,16 @@ winning_numbers = random.sample(lottery_numbers, 6)             # 6 random numbe
 
 four_with_replacement = [random.choice(range(10))
                         for _ in range(4)]                      # 4 random numbers from 10 sampling with replacement
+
+
+# Regular Expressions
+
+import re
+
+print(all([                                 # all of these are true, because
+    not re.match("a", "cat"),               # * 'cat' doesn't start with 'a'
+    re.search("a", "cat"),                  # * 'cat' has an 'a' in it
+    not re.search("c", "dog"),              # * 'dog' doesn't have a 'c' init
+    3 == len(re.split("[ab]", "carbs")),    # * split on a orb to ['c', 'r', 's']
+    "R-D-" == re.sub("[0-9]", "-", "R2D2")  # * replace digits with dashes
+]))                                         # prints True
