@@ -201,3 +201,10 @@ for i, document in enumerate(documents):
 # if we just want the indexes
 for i in range(len(documents)): do_something(i)     # not Pythonic
 for i, _ in enumerate(documents): do_something(i)   # Pythonic
+
+# Zip and Argument Unpacking
+
+list1 = ['a', 'b', 'c']
+list2 = [1, 2, 3]
+zip(list1, list2)                                   # is [('a', 1) ('b', 2), ('c', 3)]
+# if the lists are of different lengths zip stops as soon as the first lists ends
