@@ -217,3 +217,55 @@ def add (a, b): return a + b
 add(1,2)        # returns 3
 add([1,2])      # TypeError
 add(*[1,2])     # returns 3
+
+# Args and Kwargs
+
+def doubler(f):
+    def g(x):
+        return 2 * f(x)
+    return g
+
+def f1(x):
+    return x + 1
+
+g = doubler(f1)
+g(3)            # equals 8
+g(-1)           # equals 0
+
+# breaks when
+
+def f2(x, y):
+    return x + y
+
+g = doubler(f2)
+g(1, 2)         # TypeError: g() takes exactly 1 argument (2 given)
+
+def magic(*args, **kwargs):
+    print("unnamed args: {}".format(args))
+    print("keyword args: {}".format(kwargs))
+
+magic(1, 2, key="word", key2="word2")
+
+# prints
+# unnamed args: (1, 2)
+# keyword args: {'key': 'word', 'key2': 'word2'}
+
+def other_way_magic(x, y, z):
+    return x + y + z
+
+x_y_list = [1, 2]
+
+z_dict = {"z": 3}
+
+print(other_way_magic(*x_y_list, **z_dict))     # returns 6
+
+def doubler_correct(f):
+    '''works no matter what kind of inputs f expects'''
+    def g(*args, **kwargs):
+        '''whatever arguments g is supplied, pass them through to f'''
+        return 2 * f(*args, **kwargs)
+    return g
+
+g = doubler_correct(f2)
+
+print(g(1, 2))          # prints 6
