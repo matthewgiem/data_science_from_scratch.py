@@ -208,3 +208,12 @@ list1 = ['a', 'b', 'c']
 list2 = [1, 2, 3]
 zip(list1, list2)                                   # is [('a', 1) ('b', 2), ('c', 3)]
 # if the lists are of different lengths zip stops as soon as the first lists ends
+
+paris = [('a', 1), ('b', 2), ('c', 3)]
+letters, numbers = zip(*pairs)
+
+def add (a, b): return a + b
+
+add(1,2)        # returns 3
+add([1,2])      # TypeError
+add(*[1,2])     # returns 3
