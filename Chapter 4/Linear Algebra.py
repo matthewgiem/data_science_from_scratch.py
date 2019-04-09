@@ -70,3 +70,81 @@ def distance(v, w):
 def cleaner_distance(v, w):
     '''cleaner way find distance using functions already created'''
     return magnitude(vector_subtract(v,w))
+
+
+
+### MATRICES ###
+
+# typicall use capitol letters to represent matrices
+
+A = [[1,2,3],       # A has 2 rows and 3 columns
+    [4,5,6]]
+
+B = [[1,2],         # B has 3 rows and 2 columns
+    [3,4],
+    [5,6]]
+
+
+#  the matrix A has len(A) rows, and len(A[0]) columns
+
+def shape(A):
+    '''returns the number of rows and columns'''
+    num_rows = len(A)
+    num_col = len(A[0]) if A else 0     # number of elemens in the first row
+    return num_rows, num_col
+
+def get_row(A, i):
+    '''return the ith row of matrix A'''
+    return A[i]                         # A[i] is already the ith row
+
+def get_col(A, j):
+    '''return the ith col of matrix A'''
+    return [A_i[j]                      # jth element of row A_i
+            for A_i in A]               # for each row A_i
+
+def make_matrix(num_rows, num_cols, entry_fn):
+    '''return a num_rows X num_cols matrix
+    whose (i,j)th entry is entry_fn(i,j)'''
+    return [[entry_fn(i, j)             # given i, create a list
+            for j in range(num_cols)]   # [entry_fn(i,0), ... ]
+            for i in range(num_rows)]   # create one list for each j
+
+def is_diagonal(i, j):
+    '''1's on the 'diagonal', 0's everywhere else'''
+    return 1 if i == j else 0
+
+# identity_matrix = make_matrix(5, 5, is_diagonal)
+# identity_matrix = [[1, 0, 0, 0, 0],
+#                     [0, 1, 0, 0, 0],
+#                     [0, 0, 1, 0, 0],
+#                     [0, 0, 0, 1, 0],
+#                     [0, 0, 0, 0, 1]]
+
+
+friendships =  [(0, 1), (0, 2), (1, 2), (1, 3), (2, 3), (3, 4),
+                (4, 5), (5, 6), (5, 7), (6, 8), (7, 8), (8, 9)]
+
+# can be represented as a matrix
+def always_zero(x,y):
+    return 0
+friendships_matrix = make_matrix(10, 10, always_zero)
+
+for pair in friendships:
+    friendships_matrix[pair[0]][pair[1]] = 1
+    friendships_matrix[pair[1]][pair[0]] = 1
+
+friendships_matrix =    [[0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+                        [1, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+                        [0, 1, 1, 0, 1, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 1, 0, 1, 1, 0, 0],
+                        [0, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+                        [0, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+                        [0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]]
+
+
+friends_of_five = [i                                                        # only need
+                    for i , is_friend in enumerate(friendships_matrix[5])   # to look at
+                    if is_friend]                                           # one row
